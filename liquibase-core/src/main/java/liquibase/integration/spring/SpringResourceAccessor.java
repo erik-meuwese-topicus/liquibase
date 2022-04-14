@@ -132,7 +132,7 @@ public class SpringResourceAccessor extends AbstractResourceAccessor {
             relativeTo = relativeTo.replace("\\", "/");
 
             boolean relativeIsFile;
-            Resource rootResource = resourceLoader.getResource(relativeTo);
+            Resource rootResource = new DefaultResourceLoader(resourceLoader.getClassLoader()).getResource(relativeTo);
             relativeIsFile = resourceIsFile(rootResource);
 
             if (relativeIsFile) {
